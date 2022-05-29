@@ -8,6 +8,7 @@
 
 Parents find it extremely difficult to monitor their children's social media interactions for cyberbullying and toxic comments. I trained several machine learning models to detect toxic comments in over 500,000 social media comments. The best machine learning model could be used to provide alerts to parents when these issues arise online. Ultimately, these parental alerts could ameliorate some of the risks that children experience online.
 
+Please review my [presentation](./Presentation.pdf) for a quick overview of this project.
 
 ## Business Problem
 
@@ -16,6 +17,7 @@ According to a surveys from the CDC, nearly 16 percent of students in grades 9�
 However, these may be underestimates of the prevalence of cyberbullying. In 2021, Bark (a parental control app) analyzed 3.4 billion messages and found that 85% of teens experienced or witnessed cyberbullying at some point during 2021. [source](https://www.bark.us/annual-report-2021/)
 
 [![Bark annual survey](images/bark_annual_survey.png)](https://www.bark.us/annual-report-2021/)
+[source: Bark annual survey](https://www.bark.us/annual-report-2021/)
 
 Parents struggle to keep their kids and teens safe, especially online. Very few products that monitor internet usage can also monitor the *content* teens see while they are online. There are some products being developed that offer APIs to moderators and service providers to monitor for dangerous content posted by their users. But those products only provide feedback to moderators, not to the parents of children that were exposed to those comments.
 
@@ -43,6 +45,8 @@ The comment text and ratings are stored in csv files, and I read the data into a
 
 The ratings labels are floating point values ranging from 0.0 to 1.0, reflecting the proportion of human raters who determined the comment included that subtype of toxicity. I engineered a binary target for classification. Specifically, the `target` label flagged comments that exceeded thresholds (chosen by me) for any of the subsets of toxicity that were included. Using these criteria, roughly 17% of the posts are considered positive targets. Although the proportion of toxic posts is small, the total number of toxic posts is approaching 340,000. Consequently, I chose to undersample the negative class in order to avoid class imbalance while training the model.
 
+![class imbalance](images/class_imbalance.jpg)
+
 The `comment_text` feature is stored as a single continuous text string for each record, which required standard "Bag of Words" preprocessing techniques for NLP. This includes text cleaning, removing stop words, tokenization, lemmatization, and vectorization. Using the CountVectorizer method in sci-kit learn, we get a set of features representing a the number of occurrences of words in each comment.
 
 I trained several different models to use these features to predict the target label. Specifically, I tested the performance of multinomial naive bayes and logistic regression algorithms to distinguish the positive and negative target classes.
@@ -52,8 +56,24 @@ For this classification problem, there are costs for both false positives and fa
 
 ## Results
 
+### Most-common words across all comments
+After removing the most common stopwords, there are still certain words that are common across toxic and non-toxic classes, but do not seem to distinguish between those classes.
+![most frequent terms](images/FreqDist.jpg)
 
-Present your key results. For Phase 1, this will be findings from your descriptive analysis.
+
+### Terms more common in toxic comments
+
+Other words are more common in the toxic comment class than the non-toxic comment class.
+
+![bully specific words](images/bully_wordcloud.png)
+
+
+### Terms more common in non-toxic comments
+
+Still other words appear more often in the non-toxic class than toxic class.
+
+![nonbully specific words](images/nonbully_wordcloud.png)
+
 
 ***
 Questions to consider:
@@ -61,10 +81,6 @@ Questions to consider:
 * How confident are you that your results would generalize beyond the data you have?
 ***
 
-Here is an example of how to embed images from your sub-folder:
-
-### Visual 1
-![graph1](./images/viz1.png)
 
 
 ## Conclusions
@@ -82,7 +98,13 @@ Questions to consider:
 
 ## Repository Navigation
 
-Please review my [presentation](./DS_Project_Presentation.pdf) for a quick overview, or my full analysis in my Jupyter notebooks [link](./dsc-phase1-project-template.ipynb).
+Please check out my [presentation](./Presentation.pdf) for a quick overview.
+
+For the full analysis, review my Jupyter notebooks: 
+- [Data exploration](./01-data-understanding.ipynb)
+- [NLP preprocessing](./02-data-preprocessing.ipynb)
+- [Pipelines and model selection](./03-pipelines-and-models.ipynb)
+
 
 For any additional questions, please [email](mailto:gcburgess@gmail.com) or connect via [LinkedIn](https://www.linkedin.com/in/Greg-Burgess).
 
@@ -91,9 +113,10 @@ For any additional questions, please [email](mailto:gcburgess@gmail.com) or conn
 ```
 ├── README.md					<- The top-level README for reviewers of this project
 ├── Presentation.pdf				<- PDF version of project presentation
-├── 01-data-understanding-work.ipynb		<- Notebook containing data exploration
+├── 01-data-understanding.ipynb			<- Notebook containing data exploration
 ├── 02-data-preprocessing.ipynb			<- Notebook containing NLP preprocessing
 ├── 03-pipelines-and-models.ipynb		<- Notebook containing pipelines and model selection
+├── .gitignore					<- exclude certain files from repository
 ├── data					<- Both sourced externally and generated from code
 └── images					<- Both sourced externally and generated from code
 ```
