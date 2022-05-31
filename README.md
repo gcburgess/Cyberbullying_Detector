@@ -75,11 +75,14 @@ Still other words appear more often in the non-toxic class than toxic class.
 ![nonbully specific words](images/nonbully_wordcloud.png)
 
 
-***
-Questions to consider:
-* How do you interpret the results?
-* How confident are you that your results would generalize beyond the data you have?
-***
+
+### Strongest predictors from Logistic Regression model
+
+The following terms have the coefficients with the highest magnitude (absolute value). 
+
+Some of these words were in the list of words that were more common in the toxic class than non-toxic class. But many were not. Perhaps those words were also predictive due to the relative frequency of their usage in the toxic class compared to non-toxic class.
+
+![logistic regression coefficients](images/logistic_regression_coefs.jpg)
 
 
 
