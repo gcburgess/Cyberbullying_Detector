@@ -76,6 +76,15 @@ Still other words appear more often in the non-toxic class than toxic class.
 
 
 
+
+## Conclusions
+
+The final model achieved a F1 score of 80%.
+
+### Confusion matrix
+![final model confusion matrix](images/final_model_confusion_matrix.png)
+
+
 ### Strongest predictors from Logistic Regression model
 
 The following terms have the coefficients with the highest magnitude (absolute value). 
@@ -85,11 +94,6 @@ Some of these words were in the list of words that were more common in the toxic
 ![logistic regression coefficients](images/logistic_regression_coefs.jpg)
 
 
-
-## Conclusions
-
-- GDPR data portability requires that users can download their personal data, or inport to other apps
-
 Provide your conclusions about the work you've done, including any limitations or next steps.
 
 ***
@@ -98,6 +102,12 @@ Questions to consider:
 * What are some reasons why your analysis might not fully solve the business problem?
 * What else could you do in the future to improve this project?
 ***
+
+
+## Future Work / Recommendations
+
+- GDPR data portability requires that users can download their personal data, or import to other apps
+
 
 ## Repository Navigation
 
