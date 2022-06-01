@@ -79,9 +79,14 @@ Still other words appear more often in the non-toxic class than toxic class.
 
 ## Conclusions
 
-The final model achieved a F1 score of 80%.
+The final model achieved a F1 score of 80%. This was the best performance, in terms of F1 score, from the multinomial naive bayes and logistic regression models that I tested.
+
+By choosing F1 scores as the optimization metric, there should be some degree of balance between the proportion of false positives and false negatives. 
 
 ### Confusion matrix
+
+Reviewing the confusion matrix, it seems that the proportion of false positives (15%) and false negatives (23%) are relatively balanced. I sought this balance because of the concern that both false positives and false negatives carried costs. False positives could result in parents choosing to ignore potential warnings, while false negatives reflect cases of toxic content that were missed.
+
 ![final model confusion matrix](images/final_model_confusion_matrix.png)
 
 
@@ -94,19 +99,49 @@ Some of these words were in the list of words that were more common in the toxic
 ![logistic regression coefficients](images/logistic_regression_coefs.jpg)
 
 
-Provide your conclusions about the work you've done, including any limitations or next steps.
+### Predictions
 
-***
-Questions to consider:
-* What would you recommend the business do as a result of this work?
-* What are some reasons why your analysis might not fully solve the business problem?
-* What else could you do in the future to improve this project?
-***
+The model is able to classify comment text as 'toxic' or 'non-toxic'. Here are a few examples.
+
+A comment that should be classified as 'toxic' by using some of the terms with the strongest coefficients in the logistic regression.
+
+
+```python
+detect("You're a stupid idiot")
+```
+
+    toxic comment
+
+
+Another comment that, on its face, should be classified as 'non-toxic'
+
+
+```python
+detect('You are awesome and I love you')
+```
+
+    not a toxic comment
+
+
+Lastly, a comment that was created to be intentionally ambiguous.
+
+
+```python
+detect('Damn, I love you, silly')
+```
+
+    toxic comment
+
 
 
 ## Future Work / Recommendations
 
-- GDPR data portability requires that users can download their personal data, or import to other apps
+The development of this predictive model represents an early stage in the creation of a project that can help parents monitor the safety of their children's online activity. Given the opportunity, I would like to improve upon this model, and develop it into a product capable of reviewing texts and social media content. Most social media companies follow GDPR regulations for all users, which includes the data portability requirement allowing users to download their personal data, or import them to other apps.
+
+Future work
+- Acquire more diverse data, such as comments specifically from teenaged users
+- Perform additional feature engineering, such as using bigrams and trigrams
+- Develop an API to interface with users' social media accounts and highlight potential toxic comments (either made or received)
 
 
 ## Repository Navigation
