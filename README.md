@@ -4,11 +4,15 @@
 
 ![cyberbully image](images/Cyberprzemoc.png)
 
+****
+
 ## Overview
 
 Parents find it extremely difficult to monitor their children's social media interactions for cyberbullying and toxic comments. I trained several machine learning models to detect toxic comments in over 500,000 social media comments. The best machine learning model could be used to provide alerts to parents when these issues arise online. Ultimately, these parental alerts could ameliorate some of the risks that children experience online.
 
 Please review my [presentation](./Presentation.pdf) for a quick overview of this project.
+
+****
 
 ## Business Problem
 
@@ -23,9 +27,17 @@ Parents struggle to keep their kids and teens safe, especially online. Very few 
 
 I developed a machine learning model that can identify cyberbullying and other toxic comments in online text comments. This service could be utilized to protect children from toxic comments by alerting parents to these occurrences, thereby enabling them to discuss these issues with their children.
 
+****
+
 ## Data
 
 The data I used to train the model came from a set of roughly two million comments collected by the [Civil Comments](https://medium.com/@aja_15265/saying-goodbye-to-civil-comments-41859d3a2b1d) platform. [Jigsaw](https://jigsaw.google.com), a subsidiary of Google that explores various threats across the internet, provided human ratings of different subtypes of toxicity in those comments. The comments and rating labels were released in csv format on [Kaggle](https://www.kaggle.com/competitions/jigsaw-unintended-bias-in-toxicity-classification/data)
+
+### Data Download
+
+To download these data, visit the Kaggle competition site [data page](https://www.kaggle.com/competitions/jigsaw-unintended-bias-in-toxicity-classification/data). You must sign in with your Kaggle account and agree to the "Competition Rules" before you can click on the "Download All" button to download the data. Clicking "Download All" should save a file named `jigsaw-unintended-bias-in-toxicity-classification.zip` into your default download location. Move this zip file into the data/ directory in this repository. Unzip / extract the zip file into the data/ directory, which should create a new `jigsaw-unintended-bias-in-toxicity-classification` directory containing the needed `all_data.csv` file.
+
+### Comment Ratings
 
 All comments were rated by up to 10 human raters, who were asked whether the comment contained several different subtypes of toxicity. These categories include:
 - `toxicity`
@@ -38,6 +50,7 @@ All comments were rated by up to 10 human raters, who were asked whether the com
 
 The values for each category label reflect the proportion of human raters who assessed that subtype of toxicity in the comment. I created a single binary `target` variable by reviewing comments, determining appropriate thresholds for each category, and flagged comments containing any subtype of toxicity above those thresholds.
 
+****
 
 ## Methods
 
@@ -53,6 +66,7 @@ I trained several different models to use these features to predict the target l
 
 For this classification problem, there are costs for both false positives and false negatives. False negatives (i.e., labeling toxic posts as non-toxic) are cases of cyberbullying that were missed, and negative effects of that cyberbullying will be unaddressed. On the other hand, false positives (i.e., labeling non-toxic posts as toxic) can reduce trust in the predictive model and result in parents choosing to ignore potential warnings. To balance sensitivity to both types of errors, during both training and evaluation, I used the F1-score as the metric for model performance.
 
+****
 
 ## Results
 
@@ -76,6 +90,7 @@ Still other words appear more often in the non-toxic class than toxic class.
 
 
 
+****
 
 ## Conclusions
 
@@ -133,6 +148,7 @@ detect('Damn, I love you, silly')
     toxic comment
 
 
+****
 
 ## Future Work / Recommendations
 
@@ -143,6 +159,7 @@ Future work
 - Perform additional feature engineering, such as using bigrams and trigrams
 - Develop an API to interface with users' social media accounts and highlight potential toxic comments (either made or received)
 
+****
 
 ## Repository Navigation
 
@@ -165,6 +182,7 @@ For any additional questions, please [email](mailto:gcburgess@gmail.com) or conn
 ├── 02-data-preprocessing.ipynb			<- Notebook containing NLP preprocessing
 ├── 03-pipelines-and-models.ipynb		<- Notebook containing pipelines and model selection
 ├── .gitignore					<- exclude certain files from repository
+├── nlp-env.yml					<- environment file for notebooks in this repository
 ├── data					<- Both sourced externally and generated from code
 └── images					<- Both sourced externally and generated from code
 ```
