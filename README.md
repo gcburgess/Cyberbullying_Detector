@@ -116,6 +116,8 @@ Some of these words were in the list of words that were more common in the toxic
 
 ### Predictions
 
+An app with the deployed model is running on [Streamlit](https://share.streamlit.io/gcburgess/cyberbullying_detector/main/cyberbullying_detector_app.py).
+
 The model is able to classify comment text as 'toxic' or 'non-toxic'. Here are a few examples.
 
 A comment that should be classified as 'toxic' by using some of the terms with the strongest coefficients in the logistic regression.
@@ -142,7 +144,7 @@ Lastly, a comment that was created to be intentionally ambiguous.
 
 
 ```python
-detect('Damn, I love you, silly')
+detect('I am a cereal killer!')
 ```
 
     toxic comment
@@ -170,6 +172,9 @@ For the full analysis, review my Jupyter notebooks:
 - [NLP preprocessing](./02-data-preprocessing.ipynb)
 - [Pipelines and model selection](./03-pipelines-and-models.ipynb)
 
+To run the notebooks in this repository, you should re-create the `nlp-env` environment from the `nlp-env.yml` file using `conda`. Check the [conda docs](https://docs.conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html#creating-an-environment-from-an-environment-yml-file) for installation instructions.
+
+
 
 For any additional questions, please [email](mailto:gcburgess@gmail.com) or connect via [LinkedIn](https://www.linkedin.com/in/Greg-Burgess).
 
@@ -183,6 +188,9 @@ For any additional questions, please [email](mailto:gcburgess@gmail.com) or conn
 ├── 03-pipelines-and-models.ipynb		<- Notebook containing pipelines and model selection
 ├── .gitignore					<- exclude certain files from repository
 ├── nlp-env.yml					<- environment file for notebooks in this repository
+├── cyberbullying_detector_app.py		<- streamlit app code to deploy final model
+├── requirements.txt				<- requirements file for streamlit app
 ├── data					<- Both sourced externally and generated from code
+│   └── final_model_pipe.pkl			<- File containing final model for deployment
 └── images					<- Both sourced externally and generated from code
 ```
