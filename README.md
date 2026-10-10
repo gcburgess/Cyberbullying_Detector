@@ -1,8 +1,8 @@
 # Detecting Cyberbullying with NLP
 
-**Author**: Greg Burgess
+**Author**: Shivam Gupta
 
-![cyberbully image](images/Cyberprzemoc.png)
+
 
 ****
 
@@ -10,7 +10,7 @@
 
 Parents find it extremely difficult to monitor their children's social media interactions for cyberbullying and toxic comments. I trained several machine learning models to detect toxic comments in over 500,000 social media comments. The best machine learning model could be used to provide alerts to parents when these issues arise online. Ultimately, these parental alerts could ameliorate some of the risks that children experience online.
 
-Please review my [presentation](./Presentation.pdf) for a quick overview of this project.
+
 
 ****
 
